@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 mt-4"></div>
+    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6"><h3>User List</h3></div>
+            <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
+                <form action="/users/add" method="GET" style="float:right">
+                <button class="btn btn-primary" type="submit">Add user</button>
+                </form>
+            </div>
+        </div>
+        
+        {{#each users}}
+        <div class="card mt-4 ">
+            <div class="container">
+                <div class="user-data">
+                   <div class="row">
+                       <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+                            <h6>
+                                <b>Name:</b> {{name}}</h6>
+                            <h6>
+                                <b>Email:</b> {{email}}</h6>
+                            <h6>
+                                <b>Phone:</b> {{phone}}</h6>
+                            <h6>
+                                <b>Age:</b> {{age}}</h6>
+                       </div>
+                       <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
+                           <div class="form-inline" style="float:right">
+                            <form action="/users/delete/{{this._id}}?_method=DELETE" method="post" class="pad-left">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Delete</button>
+                           </form>
+                            <form action="/users/edit/{{_id}}" method="get" class="pad-left">
+                           
+                                <button class="btn btn-warning" type="submit">Edit</button>
+                            </form>
+                            <form action="/images/{{_id}}" method="get" class="pad-left">
+                                 <button  class="btn btn-primary">View Gallery</button>
+                            </form>
+                           
+                           </div>
+                       </div>
+                   </div>
+                </div>
+
+            </div>
+        </div>
+        {{else}}
+        <h5>no users yet</h5>
+        {{/each}}
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 mb-4"></div>
+</div>
+

@@ -1,0 +1,46 @@
+
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 mt-4"></div>
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+            <div class="card mt-4">
+                <div class="container">
+                    <h3>Edit user</h3>
+                    <form name="edituser" action="/users/edit/{{user._id}}?_method=PUT" method="post" onsubmit="return validateForm()">
+                    <input type="hidden" name="_method" value="PUT">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" required value={{user.name}}>
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" required value={{user.email}}>
+                        </div>
+                        <div class="form-inline mb-2">
+                            <div class="form-group pad-right">
+                                <label for="phone" class="pad-right">Phone number</label>
+                                <input type="text" name="phone" class="form-control" required value={{user.phone}}>
+                            </div>
+                            <div class="form-group pad-left">
+                                <label for="age" class="pad-right">Age</label>
+                                <input type="text" name="age" class="form-control" required value={{user.age}}>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark mb-4">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 mb-4"></div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["edituser"]["phone"].value;
+            var y = document.forms["edituser"]["age"].value;
+            if (isNaN(x)||isNaN(y)) {
+                alert("Phone or Age must be number");
+                return false;
+            }
+        }
+    </script>
